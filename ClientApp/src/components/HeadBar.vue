@@ -5,7 +5,7 @@
         <v-toolbar-title class="font-weight-light mr-2">Editor -</v-toolbar-title>
         <ValidationObserver>
           <ValidationProvider v-slot="{ errors }" name="Project name" rules="required">
-            <v-text-field v-model="activeProject.name" placeholder="Name your project" type="text" :error-messages="errors" required @input="changeName"></v-text-field>
+            <v-text-field v-model="activeProject.name" name="nameSpace" placeholder="Name your project" type="text" :error-messages="errors" required @input="changeName"></v-text-field>
           </ValidationProvider>
         </ValidationObserver>
         <v-btn class="mr-0 ml-3" color="primary" small @click="dialog = true" v-if="$store.state.auth.jwt">New project</v-btn>
