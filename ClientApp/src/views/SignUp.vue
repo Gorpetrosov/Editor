@@ -20,6 +20,7 @@
               <ValidationObserver v-slot="{ invalid }">
                 <ValidationProvider v-slot="{ errors }" name="user name" rules="required">
                   <v-text-field
+                    name="userName"
                     v-model="userName"
                     :error-messages="errors"
                     placeholder="User Name"
@@ -28,6 +29,7 @@
                 </ValidationProvider>
                 <ValidationProvider v-slot="{ errors }" name="email" rules="required|email">
                   <v-text-field
+                    name="email"
                     v-model="email"
                     :error-messages="errors"
                     placeholder="E-mail"
@@ -36,6 +38,7 @@
                 </ValidationProvider>
                 <ValidationProvider v-slot="{ errors }" name="password" rules="required|min:8|password:@confirmation">
                   <v-text-field
+                    name="password"
                     v-model="password"
                     :error-messages="errors"
                     placeholder="Password"
@@ -45,6 +48,7 @@
                 </ValidationProvider>
                 <ValidationProvider v-slot="{ errors }" name="confirmation" rules='required|min:8'>
                   <v-text-field
+                    name="confirmPassword"
                     v-model="confirmPassword"
                     :error-messages="errors"
                     placeholder="Confirm Password"
