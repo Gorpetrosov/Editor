@@ -58,8 +58,8 @@
               {{ $store.state.auth.user.email }}
             </p>
 
-            <v-btn color="primary" rounded class="mr-0" to="/change-password">
-              Change Password
+            <v-btn id="goToChangePassword" color="primary" rounded class="mr-0" to="/change-password">
+              Change password
             </v-btn>
           </v-card-text>
         </base-material-card>

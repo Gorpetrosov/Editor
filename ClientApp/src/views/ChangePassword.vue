@@ -22,6 +22,7 @@
                   rules="required"
                 >
                   <v-text-field
+                    name="oldPassword"
                     v-model="oldPassword"
                     :error-messages="errors"
                     placeholder="old password"
@@ -34,6 +35,7 @@
                   rules="required|min:8|oldPassword:@oldPassword|password:@confirmation"
                 >
                   <v-text-field
+                    name="newPassword"
                     v-model="newPassword"
                     :error-messages="errors"
                     placeholder="new password"
@@ -46,6 +48,7 @@
                   rules="required|min:8"
                 >
                   <v-text-field
+                    name="confirmPassword"
                     v-model="confirmPassword"
                     :error-messages="errors"
                     placeholder="confirm password"
@@ -56,7 +59,7 @@
                 <v-alert type="success" v-if="successMsg">{{ successMsg }}</v-alert>
                 <div class="text-right">
                   <v-btn color="primary" class="mr-0"  @click="savePassword" :disabled="invalid">
-                    Change Password
+                    Change password
                   </v-btn>
                 </div>
               </ValidationObserver>
@@ -144,7 +147,7 @@ export default Vue.extend({
               oldPassword: this.oldPassword,
               newPassword: this.newPassword,
             }, this.$store.state.auth.jwt);
-            this.successMsg = 'Your password is successfuly changed.'
+            this.successMsg = 'Your password is successfully changed.'
       } catch {
         this.errorMsg = 'Wrong password.'
       }
