@@ -45,10 +45,14 @@
             <span>{{ snackbar.text }}</span>
           </div>
           <div v-if="snackbar.buttons" class="d-flex justify-space-around pb-5">
-            <v-btn color="secondary" @click="acceptCookies()" small>accept</v-btn>
-            <v-btn color="secondary" @click="customizeCookies()" small>customize</v-btn>
+            <v-btn color="primary" @click="acceptCookies()" small>accept</v-btn>
+            <v-btn color="primary" @click="customizeCookies()" small>customize</v-btn>
           </div>
         </div>
+        <v-switch
+          v-model="darkTheme"
+          label="Dark Mode"
+        ></v-switch>
         <a class="repositoryLink" href="https://github.com/BootGen/Editor" target="_blank" @click="openGithub()">
           <v-icon class="pr-2">mdi-github</v-icon>
           github.com/BootGen/Editor
@@ -91,10 +95,11 @@ export default {
       buttons: [
         {name: 'accept', color: 'secondary'},
         {name: 'customize', color: 'secondary'}
-      ]
+      ],
     },
     cookieConsentAnswered: false,
-    cookiesAccepted: false
+    cookiesAccepted: false,
+    darkTheme: false
   }),
   components: {
     Snackbar,
@@ -102,6 +107,11 @@ export default {
   mounted(){
     if(localStorage.cookieConsentAnswered) this.cookieConsentAnswered = localStorage.cookieConsentAnswered;
     if(localStorage.cookiesAccepted) this.cookiesAccepted = localStorage.cookiesAccepted;
+    if(localStorage.darkTheme === 'true'){
+      this.darkTheme = true;
+    }else{
+      this.darkTheme = false;
+    }
   },
   watch:{
     cookieConsentAnswered(answered) {
@@ -109,6 +119,11 @@ export default {
     },
     cookiesAccepted(accepted) {
       localStorage.cookiesAccepted = accepted;
+    },
+    darkTheme(dark){
+      this.$gtag?.event('change-theme');
+      localStorage.darkTheme = dark;
+      this.$vuetify.theme.dark = dark;
     }
   },
   computed: {
@@ -156,8 +171,11 @@ export default {
 </script>
 
 <style lang="css">
-  .v-application--wrap{
-    background-color: #ededed;
+  .theme--light .v-application--wrap{
+    background-color: #eee;
+  }
+  .theme--dark .v-application--wrap{
+    background-color: #363636;
   }
   .v-application--wrap nav{
     z-index: 999;
@@ -177,10 +195,10 @@ export default {
     position: absolute!important;
   }
   .navCookie{
-    color: #fff;
+    color: #eee;
   }
   a.repositoryLink{
-    color: #fff!important;
+    color: #eee!important;
     text-decoration: none;
   }
   a.repositoryLink:hover{

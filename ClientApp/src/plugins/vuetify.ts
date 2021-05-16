@@ -4,7 +4,7 @@ import '@/sass/overrides.sass'
 
 Vue.use(Vuetify)
 
-const theme = {
+const lightTheme = {
   primary: '#22195B',
   secondary: '#412fb3',
   third: '#22195b',
@@ -15,11 +15,23 @@ const theme = {
   purple: '#C792EA',
 }
 
+const darkTheme = {
+  primary: '#22195B',
+  secondary: '#412fb3',
+  third: '#22195b',
+  accent: '#412fb3',
+  info: '#00CAE3',
+  white: '#eee',
+  orange: '#F78C6C',
+  green: '#C3E88D',
+  purple: '#C792EA',
+}
+
 export default new Vuetify({
   theme: {
     themes: {
-      dark: theme,
-      light: theme,
+      dark: darkTheme,
+      light: lightTheme,
     },
   },
 })
