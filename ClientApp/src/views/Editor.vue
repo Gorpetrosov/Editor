@@ -61,7 +61,7 @@
 
                 <v-tooltip bottom>
                   <template v-slot:activator="{ on, attrs }">
-                    <v-btn class="mr-2" color="white" elevation="1" fab small :disabled="isPristine || generateLoading || activeProject.name === ''" @click="onGenerateClicked" v-bind="attrs" v-on="on">
+                    <v-btn class="mr-2 generate" color="white" elevation="1" fab small :disabled="isPristine || generateLoading || activeProject.name === ''" @click="onGenerateClicked" v-bind="attrs" v-on="on">
                       <v-icon color="primary" v-if="!generateLoading">mdi-arrow-right-bold</v-icon>
                       <div v-if="generateLoading">
                         <v-progress-circular
